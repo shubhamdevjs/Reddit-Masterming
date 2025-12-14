@@ -39,18 +39,20 @@ const LandingPage = ({ campaigns, onCreateCampaign, onSelectCampaign, onRefreshC
     if (!window.confirm(`Are you sure you want to delete "${campaignName}"? This action cannot be undone.`)) return;
     try {
       setDeleting(campaignId);
-      // campaignName should already be the directory name (e.g., "shubham_company_name_fixed")
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
-      const response = await fetch(`${apiUrl}/api/campaigns/${encodeURIComponent(campaignName)}`, { method: 'DELETE' });
-      if (!response.ok) throw new Error('Failed to delete campaign');
-      setSuccess(`Campaign "${campaignName}" deleted successfully`);
+      // Remove from localStorage
+      const saved = localStorage.getItem('redditCampaigns');
+      const list = saved ? JSON.parse(saved) : [];
+      const updated = list.filter((c) => c.id !== campaignId);
+      localStorage.setItem('redditCampaigns', JSON.stringify(updated));
+
+      setSuccess(`Campaign "${campaignName}" deleted locally`);
       setTimeout(() => {
         setSuccess(null);
         if (onRefreshCampaigns) onRefreshCampaigns();
-      }, 2000);
+      }, 800);
     } catch (err) {
-      setError(`Error deleting campaign: ${err.message}`);
-      setTimeout(() => setError(null), 3000);
+      setError(`Error deleting campaign locally: ${err.message}`);
+      setTimeout(() => setError(null), 2000);
     } finally {
       setDeleting(null);
     }
