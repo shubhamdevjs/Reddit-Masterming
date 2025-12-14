@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 const CreateCampaignForm = ({ onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
-    userText: '',
-    companyName: '',
-    companyDescription: '',
-    subredditsText: '',
+    userText: 'keyword_id\tkeyword\nK1\taffordable ai\nK2\tai for startups\nK3\tworkflow automation\nK4\tcustomer support bots',
+    companyName: 'Acme AI',
+    companyDescription: 'AI workflow automations for small businesses',
+    subredditsText: 'r/Entrepreneur\nr/startups\nr/SaaS\nr/smallbusiness',
     personas: [
-      { persona_username: '', info: '' },
-      { persona_username: '', info: '' }
+      { persona_username: 'maya_ops', info: 'Ops lead scaling support and automation' },
+      { persona_username: 'noah_growth', info: 'Growth lead focused on activation and retention' },
+      { persona_username: 'li_dev', info: 'Engineer implementing AI features in product' }
     ],
     postsPerWeek: 3
   });
