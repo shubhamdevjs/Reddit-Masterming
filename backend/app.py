@@ -114,6 +114,11 @@ def health():
     return {"ok": True}
 
 
+@app.get("/")
+def root():
+    return {"ok": True, "hint": "try /docs or /health"}
+
+
 @app.post("/api/campaigns/create/v2")
 async def create_campaign_v2(payload: CampaignInput):
     """
