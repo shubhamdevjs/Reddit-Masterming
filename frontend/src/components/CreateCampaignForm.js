@@ -15,6 +15,7 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -166,10 +167,21 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setProgress(0);
+
+    // Start progress simulation (10 minutes = 600 seconds)
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        const increment = (100 / 600) * 2; // Increment every 2 seconds
+        return Math.min(prev + increment, 98); // Cap at 98% until complete
+      });
+    }, 2000);
 
     try {
       if (!validateForm()) {
+        clearInterval(progressInterval);
         setIsSubmitting(false);
+        setProgress(0);
         return;
       }
 
@@ -221,17 +233,76 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
         outputDir: result.outputDir,
       };
 
-      onSubmit(campaignData);
+      clearInterval(progressInterval);
+      setProgress(100);
+      
+      // Small delay to show 100% before closing
+      setTimeout(() => {
+        onSubmit(campaignData);
+      }, 300);
     } catch (error) {
       console.error('Error submitting campaign:', error);
+      clearInterval(progressInterval);
       setErrors({ submit: error.message });
+      setProgress(0);
     } finally {
+      clearInterval(progressInterval);
       setIsSubmitting(false);
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+      {/* Progress Loader Overlay */}
+      {isSubmitting && (
+        <div className="absolute inset-0 z-[60] flex items-center justify-center bg-slate-950/90 backdrop-blur-md">
+          <div className="w-full max-w-md rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-950 p-8 shadow-2xl">
+            <div className="mb-6 text-center">
+              <div className="mx-auto mb-4 h-16 w-16 animate-spin rounded-full border-4 border-slate-700 border-t-primary-500"></div>
+              <h3 className="text-xl font-bold text-white mb-2">Generating Campaign</h3>
+              <p className="text-sm text-slate-400">AI pipeline running • Estimated 5-10 minutes</p>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex justify-between text-xs font-semibold">
+                <span className="text-slate-400">Progress</span>
+                <span className="text-primary-400">{Math.round(progress)}%</span>
+              </div>
+              
+              <div className="h-3 overflow-hidden rounded-full bg-slate-800 shadow-inner">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-primary-500 to-amber-400 shadow-lg transition-all duration-500 ease-out"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+
+              <div className="space-y-1.5 pt-3 text-xs text-slate-500">
+                <div className="flex items-center gap-2">
+                  <div className={`h-1.5 w-1.5 rounded-full ${progress > 10 ? 'bg-green-500' : 'bg-slate-700'}`}></div>
+                  <span className={progress > 10 ? 'text-slate-300' : ''}>Clustering keywords</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`h-1.5 w-1.5 rounded-full ${progress > 30 ? 'bg-green-500' : 'bg-slate-700'}`}></div>
+                  <span className={progress > 30 ? 'text-slate-300' : ''}>Generating titles</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`h-1.5 w-1.5 rounded-full ${progress > 50 ? 'bg-green-500' : 'bg-slate-700'}`}></div>
+                  <span className={progress > 50 ? 'text-slate-300' : ''}>Creating post bodies</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`h-1.5 w-1.5 rounded-full ${progress > 70 ? 'bg-green-500' : 'bg-slate-700'}`}></div>
+                  <span className={progress > 70 ? 'text-slate-300' : ''}>Generating comments</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`h-1.5 w-1.5 rounded-full ${progress > 90 ? 'bg-green-500' : 'bg-slate-700'}`}></div>
+                  <span className={progress > 90 ? 'text-slate-300' : ''}>Building calendar</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="relative w-full max-w-4xl max-h-[92vh] overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 shadow-3xl">
         <div className="pointer-events-none absolute -top-12 -right-20 h-56 w-56 rounded-full bg-primary-500/20 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-16 -left-24 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl" />
@@ -273,7 +344,7 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
                 name="userText"
                 value={formData.userText}
                 onChange={handleInputChange}
-                placeholder="keyword_id\tkeyword\nK1\tbest on-device llm\nK2\tllm in every device"
+                placeholder="keyword_id&#9;keyword&#10;K1&#9;affordable AI solutions&#10;K2&#9;AI for small business&#10;K3&#9;enterprise AI tools"
                 rows="6"
                 className={`w-full rounded-lg border bg-slate-950/60 px-4 py-3 font-mono text-sm text-slate-50 shadow-inner transition focus:outline-none focus:ring-2 focus:ring-primary-500/60 ${
                   errors.userText ? 'border-red-500/80 focus:ring-red-500/60' : 'border-slate-800 focus:border-primary-500/60'
@@ -335,7 +406,7 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
                 name="subredditsText"
                 value={formData.subredditsText}
                 onChange={handleInputChange}
-                placeholder="r/MachineLearning\nr/LocalLLaMA\nr/artificial"
+                placeholder="r/Entrepreneur&#10;r/startups&#10;r/SaaS&#10;r/smallbusiness&#10;r/marketing"
                 rows="6"
                 className={`w-full rounded-lg border bg-slate-950/60 px-4 py-3 font-mono text-sm text-slate-50 shadow-inner transition focus:outline-none focus:ring-2 focus:ring-primary-500/60 ${
                   errors.subredditsText ? 'border-red-500/80 focus:ring-red-500/60' : 'border-slate-800 focus:border-primary-500/60'
