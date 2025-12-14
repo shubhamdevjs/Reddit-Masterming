@@ -140,9 +140,9 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
       }
     }
     
-    // Personas validation - minimum 2 required
-    if (formData.personas.length < 2) {
-      newErrors.personas = 'At least 2 personas are required';
+    // Personas validation - minimum 3 required
+    if (formData.personas.length < 3) {
+      newErrors.personas = 'At least 3 personas are required';
     } else {
       for (let i = 0; i < formData.personas.length; i++) {
         const p = formData.personas[i];
@@ -445,7 +445,7 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <p className="text-xs uppercase tracking-wide text-slate-400">Audience voices</p>
-                <h3 className="text-lg font-semibold text-white">Personas (min 2)</h3>
+                <h3 className="text-lg font-semibold text-white">Personas (min 3)</h3>
               </div>
               <button
                 type="button"
@@ -463,7 +463,7 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
                     <p className="text-xs uppercase tracking-wide text-slate-500">Persona {index + 1}</p>
                     <h4 className="text-base font-semibold text-white">Voice & angle</h4>
                   </div>
-                  {formData.personas.length > 2 && (
+                  {formData.personas.length > 3 && (
                     <button
                       type="button"
                       onClick={() => removePersona(index)}
