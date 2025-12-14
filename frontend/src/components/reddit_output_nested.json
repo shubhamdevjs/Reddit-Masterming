@@ -1,0 +1,563 @@
+{
+  "posts": [
+    {
+      "post_id": "P1",
+      "subreddit": "r/devops",
+      "title": "What are the best practices for building offline AI assistants on embedded devices?",
+      "body": "Looking to build an offline AI assistant on embedded devices and wondering what the best practices are for managing limited resources and ensuring smooth performance. Any tips or recommended tools would be appreciated.",
+      "author_username": "asdfadsf",
+      "timestamp": "2025-12-14T11:03:00",
+      "keyword_ids": "K3, K10, K14",
+      "comments": [
+        {
+          "comment_id": "C1",
+          "post_id": "P1",
+          "parent_comment_id": "",
+          "comment_text": "What tools do you recommend for this?",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-14 11:18",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C2",
+          "post_id": "P1",
+          "parent_comment_id": "C1",
+          "comment_text": "I've had success with TensorFlow Lite.",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-14 11:30",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C3",
+          "post_id": "P1",
+          "parent_comment_id": "",
+          "comment_text": "Offline models can be surprisingly efficient!",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-14 11:56",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P2",
+      "subreddit": "r/privacy",
+      "title": "Balancing privacy and performance with local LLM devices on edge hardware",
+      "body": "Has anyone tried running local language models on edge devices and found a good way to keep things private without killing performance? Looking for tips or setups that strike a decent balance.",
+      "author_username": "sdafasdf",
+      "timestamp": "2025-12-15T14:46:00",
+      "keyword_ids": "K1, K2, K5, K6",
+      "comments": [
+        {
+          "comment_id": "C4",
+          "post_id": "P2",
+          "parent_comment_id": "",
+          "comment_text": "How does it handle data locally?",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-15 15:00",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C5",
+          "post_id": "P2",
+          "parent_comment_id": "C4",
+          "comment_text": "Tried it, performance was surprisingly good!",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-15 15:14",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C6",
+          "post_id": "P2",
+          "parent_comment_id": "",
+          "comment_text": "Local LLMs seem promising for privacy.",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-15 15:48",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P3",
+      "subreddit": "r/raspberry_pi",
+      "title": "What makes an edge AI platform the best choice for modern device applications?",
+      "body": "I'm trying to understand what really sets edge AI platforms apart for use in modern devices—any insights on what features or capabilities make them the best choice?",
+      "author_username": "sdafasdf",
+      "timestamp": "2025-12-17T15:06:00",
+      "keyword_ids": "K16",
+      "comments": [
+        {
+          "comment_id": "C7",
+          "post_id": "P3",
+          "parent_comment_id": "",
+          "comment_text": "What features should I look for in one?",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-17 15:22",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C8",
+          "post_id": "P3",
+          "parent_comment_id": "",
+          "comment_text": "Used AI for a project, pretty smooth experience.",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-17 15:57",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C9",
+          "post_id": "P3",
+          "parent_comment_id": "C7",
+          "comment_text": "Edge AI really speeds up local processing, right?",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-17 16:19",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P4",
+      "subreddit": "r/privacy",
+      "title": "How to ensure privacy when running LLM models locally on personal devices?",
+      "body": "Looking to run large language models on my own laptop but want to make sure my data stays private—any tips on how to set this up securely?",
+      "author_username": "asdfadsf",
+      "timestamp": "2025-12-22T15:05:00",
+      "keyword_ids": "K1, K2, K5, K6",
+      "comments": [
+        {
+          "comment_id": "C10",
+          "post_id": "P4",
+          "parent_comment_id": "",
+          "comment_text": "What about data encryption for local models?",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-22 15:40",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C11",
+          "post_id": "P4",
+          "parent_comment_id": "",
+          "comment_text": "I've had good luck with local LLMs so far.",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-22 15:53",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C12",
+          "post_id": "P4",
+          "parent_comment_id": "C10",
+          "comment_text": "Curious if anyone uses VPNs with AI models?",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-22 16:03",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P5",
+      "subreddit": "r/Android",
+      "title": "How offline AI assistants on embedded devices are changing device interactions",
+      "body": "Has anyone noticed how offline AI assistants on devices are changing the way we interact with Android phones? Curious if this is actually making things smoother or just a gimmick so far.",
+      "author_username": "sdafasdf",
+      "timestamp": "2025-12-25T13:40:00",
+      "keyword_ids": "K3, K10, K14",
+      "comments": [
+        {
+          "comment_id": "C13",
+          "post_id": "P5",
+          "parent_comment_id": "",
+          "comment_text": "This is fascinating! How does it work exactly?",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-25 14:25",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C14",
+          "post_id": "P5",
+          "parent_comment_id": "",
+          "comment_text": "I've noticed my device is way faster now.",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-25 14:47",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C15",
+          "post_id": "P5",
+          "parent_comment_id": "",
+          "comment_text": "Offline AI is a game changer for privacy!",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-25 14:56",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P6",
+      "subreddit": "r/apple",
+      "title": "Edge AI vs cloud computing: Which offers better LLM experience for devices?",
+      "body": "Has anyone noticed a real difference in performance or privacy when running LLMs on-device versus relying on cloud computing? Trying to figure out which is better for everyday use on Apple devices.",
+      "author_username": "sdafasdf",
+      "timestamp": "2025-12-27T12:34:00",
+      "keyword_ids": "K4",
+      "comments": [
+        {
+          "comment_id": "C16",
+          "post_id": "P6",
+          "parent_comment_id": "",
+          "comment_text": "Is Edge AI really faster for LLM tasks?",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-27 12:54",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C17",
+          "post_id": "P6",
+          "parent_comment_id": "",
+          "comment_text": "Tried Edge AI, impressed with the speed.",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-27 13:02",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C18",
+          "post_id": "P6",
+          "parent_comment_id": "C16",
+          "comment_text": "Cloud computing still feels more reliable for me.",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-27 13:25",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P7",
+      "subreddit": "r/raspberry_pi",
+      "title": "Which edge AI platforms currently offer the best performance for real-time device processing?",
+      "body": "Looking to run some real-time processing on a Raspberry Pi and wondering which edge AI platforms are currently the fastest and most reliable. Any recommendations based on recent experience?",
+      "author_username": "asdfadsf",
+      "timestamp": "2025-12-28T11:01:00",
+      "keyword_ids": "K16",
+      "comments": [
+        {
+          "comment_id": "C19",
+          "post_id": "P7",
+          "parent_comment_id": "",
+          "comment_text": "Have you tried AI's platform? Impressive speed!",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-28 11:41",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C20",
+          "post_id": "P7",
+          "parent_comment_id": "",
+          "comment_text": "Curious about AI's edge performance. Any benchmarks?",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-28 12:16",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C21",
+          "post_id": "P7",
+          "parent_comment_id": "C19",
+          "comment_text": "I've had good results with AI for processing.",
+          "username": "sdafasdf",
+          "timestamp": "2025-12-28 12:45",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P8",
+      "subreddit": "r/Android",
+      "title": "Developing with LLM SDKs for edge devices: challenges and solutions",
+      "body": "Has anyone here worked with large language model SDKs on edge devices? Curious about the main challenges you ran into and how you tackled them.",
+      "author_username": "sdafasdf",
+      "timestamp": "2025-12-31T13:06:00",
+      "keyword_ids": "K15",
+      "comments": [
+        {
+          "comment_id": "C22",
+          "post_id": "P8",
+          "parent_comment_id": "",
+          "comment_text": "What challenges have you faced with LLMs?",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-31 13:34",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C23",
+          "post_id": "P8",
+          "parent_comment_id": "",
+          "comment_text": "Tried it on a Raspberry Pi, it’s interesting!",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-31 13:47",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C24",
+          "post_id": "P8",
+          "parent_comment_id": "C22",
+          "comment_text": "AI's potential for edge devices is exciting.",
+          "username": "asdfadsf",
+          "timestamp": "2025-12-31 14:14",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P9",
+      "subreddit": "r/privacy",
+      "title": "Privacy implications of running device LLMs locally without cloud dependency",
+      "body": "Has anyone looked into the privacy trade-offs of running language models directly on devices instead of relying on cloud services? Wondering if it really keeps data safer or if there are hidden risks.",
+      "author_username": "sdafasdf",
+      "timestamp": "2026-01-02T14:10:00",
+      "keyword_ids": "K9, K11",
+      "comments": [
+        {
+          "comment_id": "C25",
+          "post_id": "P9",
+          "parent_comment_id": "",
+          "comment_text": "Interesting! How does local processing enhance privacy?",
+          "username": "asdfadsf",
+          "timestamp": "2026-01-02 14:28",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C26",
+          "post_id": "P9",
+          "parent_comment_id": "",
+          "comment_text": "I've tried it; feels safer than cloud options.",
+          "username": "asdfadsf",
+          "timestamp": "2026-01-02 14:47",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C27",
+          "post_id": "P9",
+          "parent_comment_id": "C25",
+          "comment_text": "Local LLMs seem like a smart move for privacy.",
+          "username": "asdfadsf",
+          "timestamp": "2026-01-02 15:09",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P10",
+      "subreddit": "r/netsec",
+      "title": "Experiences integrating SDKs for device LLMs in edge AI deployments",
+      "body": "Has anyone dealt with integrating SDKs for running LLMs on edge devices? Curious about any security challenges or best practices you’ve run into.",
+      "author_username": "asdfadsf",
+      "timestamp": "2026-01-05T14:46:00",
+      "keyword_ids": "K15",
+      "comments": [
+        {
+          "comment_id": "C28",
+          "post_id": "P10",
+          "parent_comment_id": "",
+          "comment_text": "What challenges did you face during integration?",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-05 15:10",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C29",
+          "post_id": "P10",
+          "parent_comment_id": "",
+          "comment_text": "Used an SDK recently, pretty smooth process.",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-05 15:27",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C30",
+          "post_id": "P10",
+          "parent_comment_id": "",
+          "comment_text": "Edge AI is exciting! How's the performance?",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-05 15:41",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P11",
+      "subreddit": "r/devops",
+      "title": "Comparing LLMs running on edge devices versus cloud: trade-offs and use cases?",
+      "body": "Has anyone compared running large language models on edge devices versus in the cloud? Curious about the main trade-offs and which use cases really benefit from each approach.",
+      "author_username": "asdfadsf",
+      "timestamp": "2026-01-06T15:49:00",
+      "keyword_ids": "K4",
+      "comments": [
+        {
+          "comment_id": "C31",
+          "post_id": "P11",
+          "parent_comment_id": "",
+          "comment_text": "Curious about latency differences in real-world use.",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-06 16:14",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C32",
+          "post_id": "P11",
+          "parent_comment_id": "",
+          "comment_text": "Tried edge LLMs; they’re surprisingly efficient!",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-06 16:44",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C33",
+          "post_id": "P11",
+          "parent_comment_id": "C31",
+          "comment_text": "Cloud offers more power, but edge is handy.",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-06 17:13",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P12",
+      "subreddit": "r/MachineLearning",
+      "title": "Innovating with offline AI assistants: startup lessons from AI device development",
+      "body": "Has anyone here worked on AI assistants that run fully offline? Curious about the biggest challenges and lessons learned from building devices without cloud support.",
+      "author_username": "sdafasdf",
+      "timestamp": "2026-01-09T14:37:00",
+      "keyword_ids": "K10, K14",
+      "comments": [
+        {
+          "comment_id": "C34",
+          "post_id": "P12",
+          "parent_comment_id": "",
+          "comment_text": "What challenges did you face during development?",
+          "username": "asdfadsf",
+          "timestamp": "2026-01-09 15:16",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C35",
+          "post_id": "P12",
+          "parent_comment_id": "C34",
+          "comment_text": "I tried a similar AI device, loved it!",
+          "username": "asdfadsf",
+          "timestamp": "2026-01-09 15:29",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C36",
+          "post_id": "P12",
+          "parent_comment_id": "",
+          "comment_text": "Offline assistants seem really promising for privacy.",
+          "username": "asdfadsf",
+          "timestamp": "2026-01-09 16:01",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P13",
+      "subreddit": "r/privacy",
+      "title": "What privacy concerns arise when running large language models directly on user devices?",
+      "body": "I'm curious about what kind of privacy risks come up when these big models run right on your own device instead of on a server. Anyone know what to watch out for?",
+      "author_username": "asdfadsf",
+      "timestamp": "2026-01-15T14:29:00",
+      "keyword_ids": "K7, K8, K9",
+      "comments": [
+        {
+          "comment_id": "C37",
+          "post_id": "P13",
+          "parent_comment_id": "",
+          "comment_text": "Is local processing really more secure?",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-15 14:56",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C38",
+          "post_id": "P13",
+          "parent_comment_id": "C37",
+          "comment_text": "I've noticed better privacy with AI on-device.",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-15 15:13",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C39",
+          "post_id": "P13",
+          "parent_comment_id": "",
+          "comment_text": "Curious how data handling works in practice.",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-15 15:24",
+          "Column 7": ""
+        }
+      ]
+    },
+    {
+      "post_id": "P14",
+      "subreddit": "r/Entrepreneur",
+      "title": "How device AI startups can leverage offline assistants to differentiate in a crowded market",
+      "body": "Has anyone seen offline assistants actually help device AI startups stand out? Curious about practical ways to use them without relying fully on cloud AI.",
+      "author_username": "asdfadsf",
+      "timestamp": "2026-01-17T13:28:00",
+      "keyword_ids": "K3, K10, K14",
+      "comments": [
+        {
+          "comment_id": "C40",
+          "post_id": "P14",
+          "parent_comment_id": "",
+          "comment_text": "Interesting concept! How would that work in practice?",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-17 14:00",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C41",
+          "post_id": "P14",
+          "parent_comment_id": "",
+          "comment_text": "Tried a similar approach, it really helped us.",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-17 14:10",
+          "Column 7": ""
+        },
+        {
+          "comment_id": "C42",
+          "post_id": "P14",
+          "parent_comment_id": "C40",
+          "comment_text": "Offline assistants could be a game changer, right?",
+          "username": "sdafasdf",
+          "timestamp": "2026-01-17 14:39",
+          "Column 7": ""
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "generated_at": "2025-12-14T07:13:18.461396+00:00",
+    "counts": {
+      "posts": 14,
+      "comments": 42
+    },
+    "schema": {
+      "posts_cols": [
+        "post_id",
+        "subreddit",
+        "title",
+        "body",
+        "author_username",
+        "timestamp",
+        "keyword_ids"
+      ],
+      "comments_cols": [
+        "comment_id",
+        "post_id",
+        "parent_comment_id",
+        "comment_text",
+        "username",
+        "timestamp",
+        "Column 7"
+      ]
+    }
+  }
+}

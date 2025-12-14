@@ -21,6 +21,20 @@ const LandingPage = ({ campaigns, onCreateCampaign, onSelectCampaign, onRefreshC
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+  // Sample campaign (hardcoded demo)
+  const sampleCampaign = {
+    id: 'sample-demo',
+    companyName: 'AI Edge Devices',
+    companyDescription: 'Building intelligent, privacy-first solutions for edge devices. Demo campaign showing realistic Reddit campaign output.',
+    postsPerWeek: 3,
+    subreddits: ['r/devops', 'r/privacy', 'r/raspberry_pi', 'r/Android', 'r/apple', 'r/netsec', 'r/MachineLearning', 'r/Entrepreneur'],
+    personas: [
+      { persona_username: 'asdfadsf' },
+      { persona_username: 'sdafasdf' }
+    ],
+    isSample: true
+  };
+
   const handleDeleteCampaign = async (campaignId, campaignName) => {
     if (!window.confirm(`Are you sure you want to delete "${campaignName}"? This action cannot be undone.`)) return;
     try {
@@ -96,6 +110,46 @@ const LandingPage = ({ campaigns, onCreateCampaign, onSelectCampaign, onRefreshC
             <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">Click a card to open the plan</span>
           </div>
         )}
+
+        {/* Sample Campaign Card */}
+        <div className="mb-8 pb-8 border-b border-white/10">
+          <h3 className="text-sm uppercase tracking-[0.2em] text-slate-300/70 mb-4 font-semibold">Sample Campaign</h3>
+          <div className="group relative overflow-hidden rounded-2xl border border-emerald-400/30 bg-emerald-500/5 backdrop-blur shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-emerald-400/5 to-teal-500/10 opacity-0 group-hover:opacity-100 transition"></div>
+
+            <div className="relative z-10 p-6 space-y-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <p className="text-xs uppercase tracking-[0.2em] text-emerald-200/90">Campaign (Demo)</p>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-100 border border-emerald-400/40">
+                      Sample
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white leading-tight">{sampleCampaign.companyName}</h3>
+                  <p className="text-sm text-slate-200/80 mt-1 line-clamp-2">{sampleCampaign.companyDescription}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-slate-200/80">
+                <span className="px-3 py-1 rounded-full bg-emerald-400/20 border border-emerald-400/40 font-semibold text-emerald-100">{sampleCampaign.postsPerWeek} posts/week</span>
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/15">{sampleCampaign.subreddits.length} subreddits</span>
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/15">{sampleCampaign.personas.length} personas</span>
+              </div>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => onSelectCampaign(sampleCampaign.id)}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 text-white font-semibold py-2.5 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 transition hover:bg-emerald-600"
+                >
+                  View Sample Plan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* User Campaigns */}
         {campaigns.length === 0 ? (
           <div className="bg-white/5 border border-white/10 rounded-2xl p-14 text-center shadow-2xl backdrop-blur">
             <div className="text-6xl mb-4">📊</div>
