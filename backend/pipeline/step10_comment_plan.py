@@ -29,7 +29,8 @@ def fmt_dt(dt: datetime) -> str:
     return dt.strftime("%Y-%m-%d %H:%M")
 
 
-def pick_commenters(all_usernames, op_username, n_unique=2, seed=""):
+def pick_commenters(all_usernames, op_username, n_unique=3, seed=""):
+    """Pick N unique commenters (excluding OP) for a post's comments."""
     unique_users = list(dict.fromkeys(all_usernames))
     pool = [u for u in unique_users if u != op_username]
     if not pool:
@@ -37,9 +38,18 @@ def pick_commenters(all_usernames, op_username, n_unique=2, seed=""):
 
     h = _stable_hash_int(seed)
     picked = []
-    for i in range(n_unique):
-        u = pool[(h + i * 3) % len(pool)]
-        picked.append(u)
+    # Ensure we pick unique personas by using different offsets
+    for i in range(min(n_unique, len(pool))):
+        idx = (h + i * 7) % len(pool)
+        u = pool[idx]
+        if u not in picked:
+            picked.append(u)
+    
+    # If we need more commenters than available, cycle through pool with different positions
+    while len(picked) < n_unique:
+        idx = (h + len(picked) * 11) % len(pool)
+        picked.append(pool[idx])
+    
     return picked
 
 
@@ -86,40 +96,104 @@ def main(company_dir: str):
         post_time = parse_iso(post["scheduled_at"])
 
         seed = f"{post_id}|{op}|{subreddit}|{title}"
-        commenters = pick_commenters(all_usernames, op, n_unique=2, seed=seed)
+        commenters = pick_commenters(all_usernames, op, n_unique=3, seed=seed)
         times = schedule_comment_times(post_time, COMMENTS_PER_POST, seed=seed)
 
         c1 = f"C{c_counter}"; c_counter += 1
         c2 = f"C{c_counter}"; c_counter += 1
         c3 = f"C{c_counter}"; c_counter += 1
 
-        comment_plan.append({
-            "comment_id": c1,
-            "post_id": post_id,
-            "parent_comment_id": "",
-            "username": commenters[0],
-            "timestamp": fmt_dt(times[0]),
-            "title": title,
-            "subreddit": subreddit
-        })
-        comment_plan.append({
-            "comment_id": c2,
-            "post_id": post_id,
-            "parent_comment_id": c1,
-            "username": commenters[1],
-            "timestamp": fmt_dt(times[1]),
-            "title": title,
-            "subreddit": subreddit
-        })
-        comment_plan.append({
-            "comment_id": c3,
-            "post_id": post_id,
-            "parent_comment_id": c2,
-            "username": op,
-            "timestamp": fmt_dt(times[2]),
-            "title": title,
-            "subreddit": subreddit
-        })
+        # Decide structure based on hash: mix of standalone and threaded comments
+        h = _stable_hash_int(seed + "|structure")
+        structure_choice = h % 3
+
+        if structure_choice == 0:
+            # Pattern: standalone, reply to first, standalone
+            comment_plan.append({
+                "comment_id": c1,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[0],
+                "timestamp": fmt_dt(times[0]),
+                "title": title,
+                "subreddit": subreddit
+            })
+            comment_plan.append({
+                "comment_id": c2,
+                "post_id": post_id,
+                "parent_comment_id": c1,
+                "username": commenters[1],
+                "timestamp": fmt_dt(times[1]),
+                "title": title,
+                "subreddit": subreddit
+            })
+            comment_plan.append({
+                "comment_id": c3,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[2],
+                "timestamp": fmt_dt(times[2]),
+                "title": title,
+                "subreddit": subreddit
+            })
+        elif structure_choice == 1:
+            # Pattern: all standalone comments
+            comment_plan.append({
+                "comment_id": c1,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[0],
+                "timestamp": fmt_dt(times[0]),
+                "title": title,
+                "subreddit": subreddit
+            })
+            comment_plan.append({
+                "comment_id": c2,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[1],
+                "timestamp": fmt_dt(times[1]),
+                "title": title,
+                "subreddit": subreddit
+            })
+            comment_plan.append({
+                "comment_id": c3,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[2],
+                "timestamp": fmt_dt(times[2]),
+                "title": title,
+                "subreddit": subreddit
+            })
+        else:
+            # Pattern: standalone, standalone, reply to first
+            comment_plan.append({
+                "comment_id": c1,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[0],
+                "timestamp": fmt_dt(times[0]),
+                "title": title,
+                "subreddit": subreddit
+            })
+            comment_plan.append({
+                "comment_id": c2,
+                "post_id": post_id,
+                "parent_comment_id": "",
+                "username": commenters[1],
+                "timestamp": fmt_dt(times[1]),
+                "title": title,
+                "subreddit": subreddit
+            })
+            comment_plan.append({
+                "comment_id": c3,
+                "post_id": post_id,
+                "parent_comment_id": c1,
+                "username": commenters[2],
+                "timestamp": fmt_dt(times[2]),
+                "title": title,
+                "subreddit": subreddit
+            })
 
     out_path = p / "comment_plan.json"
     write_json(out_path, comment_plan)

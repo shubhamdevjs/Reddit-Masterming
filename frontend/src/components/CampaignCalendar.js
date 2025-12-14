@@ -142,6 +142,10 @@ const CampaignCalendar = ({ campaign, onBack }) => {
                 {comment.comment_id && (
                   <span className="text-gray-400">id: {comment.comment_id}</span>
                 )}
+
+                {comment.parent_comment_id && (
+                  <span className="text-gray-400">parent: {comment.parent_comment_id}</span>
+                )}
               </div>
 
               <p className="text-sm text-gray-800 mt-1 break-words">{text}</p>
