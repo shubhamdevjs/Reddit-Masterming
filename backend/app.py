@@ -22,15 +22,8 @@ app = FastAPI(title="Reddit Campaign Manager API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000", 
-        "http://localhost:5173", 
-        "http://localhost:3001", 
-        "http://localhost:3002",
-        "https://*.vercel.app",  # Allow all Vercel preview deployments
-        os.getenv("FRONTEND_URL", "")  # Production frontend URL from env var
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins for now
+    allow_credentials=False,  # Must be False when using wildcard
     allow_methods=["*"],
     allow_headers=["*"],
 )
