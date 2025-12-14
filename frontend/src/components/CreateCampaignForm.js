@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const CreateCampaignForm = ({ onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
-    userText: 'keyword_id\tkeyword\nK1\taffordable ai\nK2\tai for startups\nK3\tworkflow automation\nK4\tcustomer support bots',
+    userText: 'K1 affordable ai\nK2 ai for startups\nK3 workflow automation\nK4 customer support bots',
     companyName: 'Acme AI',
     companyDescription: 'AI workflow automations for small businesses',
     subredditsText: 'r/Entrepreneur\nr/startups\nr/SaaS\nr/smallbusiness',
@@ -31,11 +31,12 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
     const keywords = [];
     for (const line of lines) {
       if (line.toLowerCase().includes('keyword_id') || line.toLowerCase().includes('keyword')) continue;
-      const parts = line.split('\t');
-      if (parts.length >= 2) {
+      // Match format: K1 keyword text here
+      const match = line.match(/^(\S+)\s+(.+)$/);
+      if (match) {
         keywords.push({
-          keyword_id: parts[0].trim(),
-          keyword: parts[1].trim()
+          keyword_id: match[1].trim(),
+          keyword: match[2].trim()
         });
       }
     }
@@ -101,19 +102,19 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
       if (lines.length === 0) {
         newErrors.userText = 'At least one keyword required';
       } else {
-        // Check each keyword line has ID and text
+        // Check each keyword line has ID and text (space-separated)
         for (const line of lines) {
-          const parts = line.split('\t');
-          if (parts.length < 2) {
-            newErrors.userText = 'Each keyword must have format: keyword_id[TAB]keyword';
+          const match = line.match(/^(\S+)\s+(.+)$/);
+          if (!match) {
+            newErrors.userText = 'Each keyword must have format: keyword_id keyword_text (e.g., K1 affordable ai)';
             break;
           }
-          if (!parts[0].trim()) {
+          if (!match[1].trim()) {
             newErrors.userText = 'Each keyword needs a non-empty keyword_id';
             break;
           }
-          if (!parts[1].trim()) {
-            newErrors.userText = `Keyword text missing for id '${parts[0].trim()}'`;
+          if (!match[2].trim()) {
+            newErrors.userText = `Keyword text missing for id '${match[1].trim()}'`;
             break;
           }
         }
@@ -327,7 +328,7 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
           <div className="flex items-start gap-3 rounded-xl border border-amber-300/20 bg-amber-400/5 px-4 py-3 text-amber-100">
             <div className="mt-0.5 h-2 w-2 rounded-full bg-amber-300" />
             <p className="text-sm leading-relaxed">
-              <strong className="text-amber-200">Paste data as generated in the notebook.</strong> Keywords & personas as TSV (tab-separated), subreddits one per line.
+              <strong className="text-amber-200">Paste your data directly.</strong> Keywords as space-separated (ID keyword_text), subreddits one per line.
             </p>
           </div>
 
@@ -338,14 +339,14 @@ const CreateCampaignForm = ({ onSubmit, onCancel }) => {
                   <p className="text-xs uppercase tracking-wide text-slate-400">Queries</p>
                   <h3 className="text-lg font-semibold text-white">Keywords (TSV)</h3>
                 </div>
-                <span className="rounded-full bg-primary-500/15 px-3 py-1 text-xs font-semibold text-primary-200 border border-primary-500/30">TSV</span>
+                <span className="rounded-full bg-primary-500/15 px-3 py-1 text-xs font-semibold text-primary-200 border border-primary-500/30">Space-separated</span>
               </div>
               <textarea
                 id="userText"
                 name="userText"
                 value={formData.userText}
                 onChange={handleInputChange}
-                placeholder="keyword_id&#9;keyword&#10;K1&#9;affordable AI solutions&#10;K2&#9;AI for small business&#10;K3&#9;enterprise AI tools"
+                placeholder="K1 affordable AI solutions&#10;K2 AI for small business&#10;K3 enterprise AI tools&#10;K4 customer support bots"
                 rows="6"
                 className={`w-full rounded-lg border bg-slate-950/60 px-4 py-3 font-mono text-sm text-slate-50 shadow-inner transition focus:outline-none focus:ring-2 focus:ring-primary-500/60 ${
                   errors.userText ? 'border-red-500/80 focus:ring-red-500/60' : 'border-slate-800 focus:border-primary-500/60'
