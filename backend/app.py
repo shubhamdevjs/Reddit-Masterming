@@ -197,23 +197,38 @@ async def create_campaign_v2(payload: CampaignInput):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.delete("/api/campaigns/{campaign_id}")
-def delete_campaign(campaign_id: str):
-    """Delete a campaign and all its files"""
+@app.delete("/api/campaigns/{company_name}")
+def delete_campaign(company_name: str):
+    """
+    Delete a campaign and all its files.
+    
+    Args:
+        company_name: The company name (will be sanitized to match directory name).
+                      This is the same company_name you used when creating the campaign.
+                     
+    Returns:
+        Success message with campaign details
+        
+    Raises:
+        404: Campaign not found
+        500: Server error during deletion
+    """
     try:
         import shutil
-        campaign_dir = COMPANIES_DIR / campaign_id
+        # Sanitize the company name to match the directory structure
+        safe_name = safe_company_dir_name(company_name)
+        campaign_dir = COMPANIES_DIR / safe_name
         
         if not campaign_dir.exists():
-            raise HTTPException(status_code=404, detail=f"Campaign '{campaign_id}' not found")
+            raise HTTPException(status_code=404, detail=f"Campaign '{company_name}' not found")
         
         # Remove the entire campaign directory
         shutil.rmtree(campaign_dir)
         
         return {
             "status": "success",
-            "message": f"Campaign '{campaign_id}' deleted successfully",
-            "campaignId": campaign_id
+            "message": f"Campaign '{company_name}' deleted successfully",
+            "companyName": company_name
         }
     
     except HTTPException:
